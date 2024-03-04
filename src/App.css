@@ -5,3 +5,27 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafb);
 }
+
+.dropzone {
+ width: 80%;
+ height: 300px;
+ margin: auto;
+ margin-top: 20px;
+ margin-bottom: 20px;
+ padding: 50px;
+ border: 2px #c3c3c3 dashed;
+ img {
+   max-width: 100%;
+   max-height: 100%;
+ }
+ img[src=""] {
+   display: none;
+ }
+}
+
+.dropzone_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
