@@ -11,11 +11,13 @@ function App() {
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedImagePath, setSelectedImagePath] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [exportFilePath, setExportFilePath] = useState("");
+  const [startConverting, setStartConverting] = useState(false);
 
   async function convertImage() {
+    setStartConverting(true);
     if (selectedImagePath == "") {
       setErrorMessage("No image selected");
+      setStartConverting(false);
       return;
     }
     setErrorMessage("");
@@ -23,17 +25,22 @@ function App() {
       dir.substring(0, dir.length - 1),
     );
     console.log(output);
+    var exportFilePath = "";
     await invoke("convert_image", {
       inputPath: selectedImagePath,
       outputPath: output,
     })
       .then((url) => {
         if (typeof url === "string") {
-          setExportFilePath(url);
+          exportFilePath = url;
         }
       })
-      .catch((error) => setErrorMessage(error));
-    // console.log(exportFilePath);
+      .catch((error) => {
+        setStartConverting(false);
+        setErrorMessage(error);
+        return;
+      });
+    console.log(exportFilePath);
     let zipFile = await readBinaryFile(exportFilePath, undefined);
     let downloadPath = await downloadDir();
     let savePath = await save({
@@ -46,10 +53,12 @@ function App() {
       ],
     });
     if (savePath == null) {
+      setStartConverting(false);
       return;
     }
     // console.log(zipFile.length);
     await writeBinaryFile(savePath, zipFile, undefined);
+    setStartConverting(false);
   }
 
   const removeSelectedImage = () => {
@@ -101,7 +110,11 @@ function App() {
         )}
       </div>
       <div className="buttons">
-        <button type="button" onClick={removeSelectedImage}>
+        <button
+          type="button"
+          onClick={removeSelectedImage}
+          disabled={startConverting}
+        >
           Clear
         </button>
         <button
@@ -109,8 +122,9 @@ function App() {
           onClick={async () => {
             await convertImage();
           }}
+          disabled={startConverting}
         >
-          Convert
+          {startConverting ? "Loading..." : "Convert"}
         </button>
       </div>
     </div>
