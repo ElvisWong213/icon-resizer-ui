@@ -4,7 +4,7 @@ import "./App.css";
 import { once } from "@tauri-apps/api/event";
 import { open, save } from "@tauri-apps/api/dialog";
 import { convertFileSrc } from "@tauri-apps/api/tauri";
-import { appCacheDir, downloadDir } from "@tauri-apps/api/path";
+import { appCacheDir, homeDir } from "@tauri-apps/api/path";
 import { readBinaryFile, writeBinaryFile } from "@tauri-apps/api/fs";
 
 function App() {
@@ -42,9 +42,12 @@ function App() {
       });
     console.log(exportFilePath);
     let zipFile = await readBinaryFile(exportFilePath, undefined);
-    let downloadPath = await downloadDir();
+    let homePath = await homeDir().catch((error) => {
+      setStartConverting(false);
+      setErrorMessage(error);
+    });
     let savePath = await save({
-      defaultPath: downloadPath + "/" + "output.zip",
+      defaultPath: homePath + "/" + "output.zip",
       filters: [
         {
           name: "zip",
@@ -72,7 +75,7 @@ function App() {
       filters: [
         {
           name: "Image",
-          extensions: ["png", "jpeg"],
+          extensions: ["png", "jpeg", "jpg"],
         },
       ],
     });
