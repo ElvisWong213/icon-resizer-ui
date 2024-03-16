@@ -132,7 +132,7 @@ function App() {
 
   return (
     <div className="container">
-      <p>{errorMessage}</p>
+      <p className="error_message">{errorMessage}</p>
       <div id="dropzone" className="dropzone">
         {selectedImage == "" ? (
           <div className="dropzone_text">
