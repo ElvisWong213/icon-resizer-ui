@@ -1434,7 +1434,7 @@ dependencies = [
 
 [[package]]
 name = "icon-resizer-ui"
-version = "0.0.0"
+version = "1.0.0"
 dependencies = [
  "icon_image",
  "serde",

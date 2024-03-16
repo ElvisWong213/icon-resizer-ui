@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+embedded.provisionprofile
+Icon Resizer.app
+Icon Resizer.pkg
