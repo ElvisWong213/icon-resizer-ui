@@ -14,7 +14,7 @@ APP_PACKAGE="$APP_NAME.pkg"
 
 # Build, Sign, Package, Upload:
 
-cargo tauri build --target universal-apple-darwin --bundles none
+cargo tauri build --target universal-apple-darwin 
 
 cp -r "$PROJECT_DIR/src-tauri/target/universal-apple-darwin/release/bundle/macos/$APP_BUNDLE" .
 

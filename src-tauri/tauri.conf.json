@@ -64,7 +64,8 @@
       "publisher": "elvis_wong",
       "macOS": {
         "minimumSystemVersion": "14",
-        "entitlements": "../entitlements.plist"
+        "entitlements": "../entitlements.plist",
+        "exceptionDomain": "true"
       }
     }
   }
