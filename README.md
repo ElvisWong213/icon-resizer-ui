@@ -1,7 +1,23 @@
-# Tauri + React + Typescript
+# App icon resizer
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+## About this project
 
-## Recommended IDE Setup
+Resize image to fit App Store app icon requirement.
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Framework Used
+
+- Tauri
+- React
+- [icon-image](https://github.com/ElvisWong213/icon-image)
+
+## Requirements
+
+- Rust 1.76.0+
+- Tauri 1.6.0+
+
+## Setup
+
+Run the command to start the app.
+```
+cargo tauri dev
+```
