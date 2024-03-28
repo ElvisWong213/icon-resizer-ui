@@ -1,8 +1,11 @@
-# App icon resizer
+<p align="center">
+    <img src="src-tauri/icons/icon.png" alt="App icon" height="128">
+    <h1 align="center">App icon resizer</h1>
+</p>
 
 ## About this project
 
-Resize image to fit App Store app icon requirement.
+Convert your icon to different size for MacOS app icon
 
 ## Framework Used
 
@@ -25,3 +28,9 @@ Run the command to start the app.
 ```
 cargo tauri dev
 ```
+## Screenshot
+
+https://github.com/ElvisWong213/icon-resizer-ui/assets/40566101/7668eaf3-6731-48bf-9281-c347b84db768
+
+
+
